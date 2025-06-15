@@ -83,4 +83,4 @@ def main():
 # except KeyboardInterrupt:
 #     print('🛑 使用者中斷 (Ctrl+C)')
 
-ui.run(port=8089, title='TunaTalk 語音辨識', host='127.0.0.1')
+ui.run(port=8090, title='TunaTalk 語音辨識', host='127.0.0.1')

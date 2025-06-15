@@ -1,5 +1,5 @@
 # tunatalk.py
-from nicegui import ui
+from nicegui import ui, app
 import asyncio
 import os
 from agentflow.core.agent import Agent
@@ -74,4 +74,13 @@ def main():
     ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔').classes('my-4')
 
 
-ui.run(port=8088, title='TunaTalk 語音辨識', host='127.0.0.1')
+       
+try:
+    ui.run(
+        host='0.0.0.0',
+        title='TunaTalk 語音辨識'
+    )
+except KeyboardInterrupt:
+    print('🛑 使用者中斷 (Ctrl+C)')
+
+# ui.run(port=8088, title='TunaTalk 語音辨識', host='127.0.0.1')

@@ -73,13 +73,9 @@ def main():
 
     ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔').classes('my-4')
 
-
-# 正式部署時，使用 Unix Domain Socket
 if __name__ in {'__main__', '__mp_main__'}:
-    sock_path = os.path.join(os.getcwd(), 'network.sock')
-    if os.path.exists(sock_path):
-        os.remove(sock_path)
-    ui.run(uds=sock_path)  # 使用 Unix Domain Socket
-
+    port = int(os.getenv('DEPOTRON_PORT', 8090))  # 預設 8090
+    ui.run(host='0.0.0.0', port=port)
+    
 # 開發環境下，使用本地端口
 #ui.run(port=8090, title='TunaTalk 語音辨識', host='127.0.0.1')

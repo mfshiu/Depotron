@@ -85,5 +85,6 @@ def main():
 
 #ui.run(port=8090, title='TunaTalk 語音辨識', host='127.0.0.1')
 
-if __name__ == '__main__':
-    ui.run(host='0.0.0.0')
+if __name__ in {"__main__", "__mp_main__"}:
+    # 如果是直接執行此腳本，則啟動 NiceGUI 服務
+    ui.run(title='TunaTalk 語音辨識', host='0.0.0.0')

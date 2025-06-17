@@ -74,17 +74,12 @@ def main():
     ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔').classes('my-4')
 
 
-       
-# try:
-#     ui.run(
-#         host='0.0.0.0',
-#         title='TunaTalk 語音辨識'
-#     )
-# except KeyboardInterrupt:
-#     print('🛑 使用者中斷 (Ctrl+C)')
+# 正式部署時，使用 Unix Domain Socket
+if __name__ in {'__main__', '__mp_main__'}:
+    sock_path = os.path.join(os.getcwd(), 'network.sock')
+    if os.path.exists(sock_path):
+        os.remove(sock_path)
+    ui.run(uds=sock_path)  # 使用 Unix Domain Socket
 
+# 開發環境下，使用本地端口
 #ui.run(port=8090, title='TunaTalk 語音辨識', host='127.0.0.1')
-
-if __name__ in {"__main__", "__mp_main__"}:
-    # 如果是直接執行此腳本，則啟動 NiceGUI 服務
-    ui.run(title='TunaTalk 語音辨識', host='0.0.0.0')

@@ -79,8 +79,7 @@ def main():
 
 if __name__ in {'__main__', '__mp_main__'}:
     port = int(os.getenv('DEPOTRON_PORT', 8090))  # 預設 8090
-    ui.run(host='0.0.0.0', port=port, max_upload_size=1024**2,  # 設定最大上傳大小為 1GB
-            title='TunaTalk 語音辨識',)
+    ui.run(host='0.0.0.0', port=port, title='TunaTalk 語音辨識',)
     
 # 開發環境下，使用本地端口
 #ui.run(port=8090, title='TunaTalk 語音辨識', host='127.0.0.1')

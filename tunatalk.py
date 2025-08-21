@@ -71,7 +71,11 @@ def main():
 
         asyncio.create_task(process())
 
-    ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔').classes('my-4')
+    # ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔').classes('my-4')
+    # 設定前端單檔上限 1GB（1073741824 bytes）
+    ui.upload(on_upload=on_upload, auto_upload=True, label='上傳音檔') \
+      .props('max-file-size=1073741824') \
+      .classes('my-4')
 
 if __name__ in {'__main__', '__mp_main__'}:
     port = int(os.getenv('DEPOTRON_PORT', 8090))  # 預設 8090
